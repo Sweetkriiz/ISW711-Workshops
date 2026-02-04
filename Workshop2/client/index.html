@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Manager</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      padding: 40px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+      max-width: 600px;
+    }
+
+    input {
+      padding: 8px;
+      margin-right: 10px;
+    }
+
+    button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: #007bff;
+      color: white;
+    }
+
+    .btn-danger {
+      background: #dc3545;
+      color: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Course Manager</h1>
+
+  <div class="card">
+    <h3>Create Course</h3>
+    <input type="text" id="name" placeholder="Course name">
+    <input type="number" id="credits" placeholder="Credits">
+    <button class="btn-primary" onclick="createCourse()">Create</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Credits</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="courseTable"></tbody>
+  </table>
+
+  <script>
+    const API_URL = 'http://localhost:3001/course';
+
+    async function getCourses() {
+      const res = await fetch(API_URL);
+      const courses = await res.json();
+
+      const table = document.getElementById('courseTable');
+      table.innerHTML = '';
+
+      courses.forEach(course => {
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+          <td>${course.name}</td>
+          <td>${course.credits}</td>
+          <td>
+            <button class="btn-danger" onclick="deleteCourse('${course._id}')">
+              Delete
+            </button>
+          </td>
+        `;
+
+        table.appendChild(row);
+      });
+    }
+
+    async function createCourse() {
+      const name = document.getElementById('name').value;
+      const credits = document.getElementById('credits').value;
+
+      await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, credits })
+      });
+
+      document.getElementById('name').value = '';
+      document.getElementById('credits').value = '';
+
+      getCourses();
+    }
+
+    async function deleteCourse(id) {
+      await fetch(`${API_URL}?id=${id}`, {
+        method: 'DELETE'
+      });
+
+      getCourses();
+    }
+
+    getCourses();
+  </script>
+
+</body>
+</html>
