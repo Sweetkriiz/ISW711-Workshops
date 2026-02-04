@@ -1,16 +1,5 @@
-# Week 1 - My First Hello World with API
+A client page was implemented using HTML and JavaScript.
 
-## Install
+The page consumes the REST API by calling the GET /course endpoint using the Fetch API.
 
-- Install nvm
-- run `nvm use`, this will set the right version of node
-- run `npm install` to install dependencies
-
-## Run
-
-- To execute the service run `npm start`
-
-
-## Test
-
-- To test this you can use [postman](https://www.postman.com/) or a simple curl request: `curl http://localhost:3000/tipocambio`
+The response is processed and the list of courses is dynamically rendered in an HTML table, allowing the user to visualize all registered courses.
