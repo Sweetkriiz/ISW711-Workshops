@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestión Académica</title>
+</head>
+<body>
+
+  <h1>Profesores</h1>
+
+  <h3>Agregar / Editar Profesor</h3>
+
+  <input id="t_name" placeholder="Nombre">
+  <input id="t_lastName" placeholder="Apellidos">
+  <input id="t_cedula" placeholder="Cédula">
+  <input id="t_age" placeholder="Edad">
+
+  <button onclick="guardarProfesor()">Guardar Profesor</button>
+
+  <button onclick="cargarProfesores()">Mostrar Profesores</button>
+
+  <ul id="listaProfesores"></ul>
+
+  <hr>
+
+  <h1>Cursos</h1>
+
+  <h3>Agregar / Editar Curso</h3>
+
+  <input id="c_name" placeholder="Nombre">
+  <input id="c_code" placeholder="Código">
+  <input id="c_description" placeholder="Descripción">
+  <input id="c_teacherId" placeholder="ID del Profesor">
+
+  <button onclick="guardarCurso()">Guardar Curso</button>
+
+  <button onclick="cargarCursos()">Mostrar Cursos</button>
+
+  <ul id="listaCursos"></ul>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
