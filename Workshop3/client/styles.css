@@ -1,0 +1,64 @@
+body {
+  font-family: 'Arial', sans-serif;
+  color: #112081;
+  padding: 50px;
+  background-color: #f9f9f9; /* fondo claro para que resalte el azul */
+}
+
+h1 {
+  color: #0b7435;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #0db257;
+  margin-top: 40px;
+}
+
+input {
+  height: 2rem;   
+  font-size: 1.2rem;
+  padding: 8px 12px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  
+}
+
+button {
+  background-color: #044064;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  margin-left: 5px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+}
+
+button:hover {
+  background-color: #27be66;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+
+ul {
+  list-style: none; 
+  padding-left: 0;
+}
+
+
+
+li {
+  background-color: #e3eaf5;
+  margin: 10px 0;
+  padding: 10px 15px;
+  border-radius: 12px;
+  display:  flex;
+  justify-content:space-between;
+  align-items: center;
+}
+
+

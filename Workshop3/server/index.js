@@ -19,6 +19,8 @@ app.use(cors({
 // Rutas
 app.use('/api', courseRoutes);
 
+app.use(express.static('client'));
+
 // Conexión a MongoDB
 mongoose.connect(process.env.DATABASE_URL);
 
